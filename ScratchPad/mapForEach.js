@@ -1,17 +1,13 @@
 var mapForEach = function (arr, fn) {
-    console.log(arr.length);
+    var arrFinal = [];
     for (var count = 0; count < arr.length; count++) {
-        console.log(arr[count]);
-        fn(arr[count]);
+        arrFinal.push(fn(arr[count]));
     }
+
+    return arrFinal;
 };
 
 var arr1 = [3, 4, 9];
-
-mapForEach(arr1, function (item) {
-    console.log("item is : " + item);
-});
-
 
 var mapFunction = function (limiter, item) {
     return item > limiter;
@@ -24,4 +20,8 @@ var checkPassedLimit = function (limiter) {
     }.bind(this, limiter);
 };
 
-var arr5 = mapForEach(arr1, checkPassedLimit(2));
+var arr5 = mapForEach(arr1, checkPassedLimit(5));
+
+console.log('original array : ' + arr1);
+
+console.log('arr5           : ' + arr5);
